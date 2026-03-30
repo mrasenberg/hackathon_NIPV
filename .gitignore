@@ -1,4 +1,4 @@
 data/
 notebooks/cache/
 reports/
-!.gitkeep
+!**/.gitkeep
