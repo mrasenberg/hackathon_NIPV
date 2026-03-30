@@ -1,0 +1,23 @@
+### support file for constants used throughout the package ###
+WS84_NL_NORTH = 53.6
+WS84_NL_SOUTH = 50.7
+WS84_NL_EAST = 7.2
+WS84_NL_WEST = 3.3
+WS84_NL_BOUNDS = {
+    'north': WS84_NL_NORTH,
+    'south': WS84_NL_SOUTH,
+    'east': WS84_NL_EAST,
+    'west': WS84_NL_WEST,
+    'crs': 'EPSG:4326'
+}
+
+# Folder locations
+BASE_FOLDER_LOCATION = "/Workspace/Shared/nooddrinkwater_locaties_distributie/hackathon_nooddrinkwater"
+
+REPORTS_FOLDER_LOCATION = BASE_FOLDER_LOCATION + "/reports"
+DATA_FOLDER_LOCATION = BASE_FOLDER_LOCATION + "/data"
+
+DATA_EXTERNAL_FOLDER_LOCATION = DATA_FOLDER_LOCATION + "/external"
+DATA_INTERIM_FOLDER_LOCATION = DATA_FOLDER_LOCATION + "/interim"
+DATA_PROCESSED_FOLDER_LOCATION = DATA_FOLDER_LOCATION + "/processed"
+DATA_RAW_FOLDER_LOCATION = DATA_FOLDER_LOCATION + "/raw"
