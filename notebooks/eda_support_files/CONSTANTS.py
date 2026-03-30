@@ -12,7 +12,7 @@ WS84_NL_BOUNDS = {
 }
 
 # Folder locations
-BASE_FOLDER_LOCATION = "/Workspace/Shared/nooddrinkwater_locaties_distributie/hackathon_nooddrinkwater"
+BASE_FOLDER_LOCATION = "[VUL HIER HET FOLDERPAD IN TOT AAN hackathon_NIPV/]"
 
 REPORTS_FOLDER_LOCATION = BASE_FOLDER_LOCATION + "/reports"
 DATA_FOLDER_LOCATION = BASE_FOLDER_LOCATION + "/data"

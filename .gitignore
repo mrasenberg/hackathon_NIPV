@@ -2,6 +2,8 @@ data/external/*
 data/interim/*
 data/processed/*
 data/raw/*
+
 reports/*
 notebooks/cache/
+
 !**/.gitkeep
