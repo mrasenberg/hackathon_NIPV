@@ -6,6 +6,8 @@ Hij is opgezet in de vorm van de data-science cookie cutter. Hoe dan ook, je vin
 In deze notebook wordt alles geregeld, van het installeren van de package die nodig zijn voor deze tool, het downloaden en inladen van alle opensource data tot aan het genereren van geadviseerde locaties.
 In het notebook zijn een aantal variabelen gevuld met "[VUL HIER x IN]", hier moet je bijvoorbeeld aangeven voor welke gemeente je gaat draaien, ik wil je vragen op "VUL HIER" te zoeken en alle velden aan te vullen voordat je het notebook draait. Dit voorkomt dat je tegen problemen aanloopt.
 
+Om te voorkomen dat jullie allen los data gaan opvragen via API's hebben wij het een en ander klaargezet in een Sharepoint omgeving: https://ifvportal.sharepoint.com/sites/hackathonnipvnooddrinkwater/SitePages/Home.aspx
+
 **LET OP: de eerste keer dat je het nodebook draait kan het zijn dat het vrij lang duurt, dit komt omdat alle data nog verzamelt en geprepareerd moet worden.**
 
 ```
