@@ -322,14 +322,14 @@ class GenerateGemeenteResidents:
             crs="EPSG:4326",
         )
 
-        # === Randomly assign demographics to each point (residents) ===
-        df["migratieachtergrond"] = self._assign_migratieachtergrond(buurt = buurt, population = population, size = len(df))
-        df["leeftijd"] = self._assign_leeftijd(buurt = buurt, population = population, size = len(df))
-        df["onderwijs_niveau"] = self._assign_onderwijs(buurt = buurt, population = population, size = len(df))
-        df["arbeids_relatie"] = self._assign_arbeid(buurt = buurt, population = population, size = len(df))
-        df["inkomens_niveau"] = self._assign_inkomen(buurt = buurt, population = population, size =len(df))
-        df["uitkering"] = self._assign_uitkering(buurt = buurt, population = population, size = len(df))
-        df["wmo_client"] = self._assign_wmo(buurt = buurt, population = population, size = len(df))
+        # # === Randomly assign demographics to each point (residents) ===
+        # df["migratieachtergrond"] = self._assign_migratieachtergrond(buurt = buurt, population = population, size = len(df))
+        # df["leeftijd"] = self._assign_leeftijd(buurt = buurt, population = population, size = len(df))
+        # df["onderwijs_niveau"] = self._assign_onderwijs(buurt = buurt, population = population, size = len(df))
+        # df["arbeids_relatie"] = self._assign_arbeid(buurt = buurt, population = population, size = len(df))
+        # df["inkomens_niveau"] = self._assign_inkomen(buurt = buurt, population = population, size =len(df))
+        # df["uitkering"] = self._assign_uitkering(buurt = buurt, population = population, size = len(df))
+        # df["wmo_client"] = self._assign_wmo(buurt = buurt, population = population, size = len(df))
 
         return df
 
