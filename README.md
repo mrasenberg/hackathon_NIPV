@@ -8,7 +8,8 @@ In het notebook zijn een aantal variabelen gevuld met "[VUL HIER x IN]", hier mo
 
 Om te voorkomen dat jullie allen los data gaan opvragen via API's hebben wij het een en ander klaargezet in een Sharepoint omgeving: https://ifvportal.sharepoint.com/sites/hackathonnipvnooddrinkwater/SitePages/Home.aspx
 
-**LET OP: de eerste keer dat je het nodebook draait kan het zijn dat het vrij lang duurt, dit komt omdat alle data nog verzamelt en geprepareerd moet worden.**
+**LET OP: de eerste keer dat je het nodebook draait kan het zijn dat het vrij lang duurt, dit komt omdat alle data nog verzamelt en geprepareerd moet worden. Om dit te voorkomen hebben we wat bestanden in Sharepoint klaargezet**
+**LET OP: in notebooks/eda_support_files/CONSTANTS.py vind je een pad wat je moet invullen voor jouw pad**
 
 ```
 ├── README.md          <- The top-level README for developers using this project.
