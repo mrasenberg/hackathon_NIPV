@@ -1,7 +1,7 @@
 # nooddrinkwater_locaties_distributie
 
 Hey Hackathon deelnemer! Hierbij de repository die we belooft hadden, hieronder een overzicht van de opbouw van de repository.
-Hij is opgezet in de vorm van de data-science cookie cutter. Hoe dan ook, je vind onze notebook 'parkeerplaatsen_als_locatie_EDA' in de 'notebooks' folder.
+Hij is opgezet in de vorm van de data-science cookie cutter. Hoe dan ook, je vind onze notebook 'location_picker' in de 'notebooks' folder.
 
 In deze notebook wordt alles geregeld, van het installeren van de package die nodig zijn voor deze tool, het downloaden en inladen van alle opensource data tot aan het genereren van geadviseerde locaties.
 In het notebook zijn een aantal variabelen gevuld met "[VUL HIER x IN]", hier moet je bijvoorbeeld aangeven voor welke gemeente je gaat draaien, ik wil je vragen op "VUL HIER" te zoeken en alle velden aan te vullen voordat je het notebook draait. Dit voorkomt dat je tegen problemen aanloopt.
