@@ -37,17 +37,14 @@ class GetGemeenteDataPDOK:
         "https://api.pdok.nl/cbs/wijken-en-buurten-2023/ogc/v1/collections/{collection}/items"
     )
 
-    COLUMNS = [
-        "geometry", "jrstatcode", "jaar", "buurtcode", "buurtnaam", "gemeentecode",
-        "gemeentenaam", "aantal_inwoners", "percentage_personen_0_tot_15_jaar",
-        "percentage_personen_15_tot_25_jaar", "percentage_personen_25_tot_45_jaar",
-        "percentage_personen_45_tot_65_jaar", "percentage_personen_65_jaar_en_ouder",
-        "aantal_huishoudens", "personenautos_totaal", "water",
-    ]
+    DEFAULT_COLUMNS = [
+    "geometry", "jrstatcode", "jaar", "buurtcode", "buurtnaam",
+    "gemeentecode", "gemeentenaam", "aantal_inwoners", "water"]
 
     def __init__(
         self,
         limit: int = 1000,
+        columns: Optional[List[str]] = None,
         filepath: Union[str, Path] = None,
         logger: Optional[logging.Logger] = None,
     ) -> None:
@@ -58,6 +55,9 @@ class GetGemeenteDataPDOK:
         self.features: List[dict] = []
         self.filename = Path(filepath + "/gemeente.geojson")
         self.gdf: Optional[gpd.GeoDataFrame] = None
+
+        extra_cols = columns or []
+        self.columns = list(dict.fromkeys(self.DEFAULT_COLUMNS + extra_cols)) 
 
     # ------------------------------------------------------------------
     # Public API
@@ -86,7 +86,6 @@ class GetGemeenteDataPDOK:
         self._filter_water()
         self._fill_missing_values()
         self._clean_gemeentecode()
-        self._compute_population_by_age()
         self._aggregate_gemeenten()
 
         # PDOK uses EPSG:4326; enforce it explicitly
@@ -147,7 +146,7 @@ class GetGemeenteDataPDOK:
     # Cleaning & Filtering
     # ------------------------------------------------------------------
     def _select_relevant_columns(self) -> None:
-        cols = [c for c in self.COLUMNS if c in self.gdf.columns]
+        cols = [c for c in self.DEFAULT_COLUMNS if c in self.gdf.columns]
         self.logger.info("Selecting %d relevant columns.", len(cols))
         self.gdf = self.gdf[cols]
 
@@ -188,34 +187,6 @@ class GetGemeenteDataPDOK:
     # ------------------------------------------------------------------
     # Computations
     # ------------------------------------------------------------------
-    def _compute_population_by_age(self) -> None:
-        """
-        Convert age-category percentages into absolute counts:
-            percentage_X * aantal_inwoners / 100
-        """
-        percentage_cols = [
-            "percentage_personen_0_tot_15_jaar",
-            "percentage_personen_15_tot_25_jaar",
-            "percentage_personen_25_tot_45_jaar",
-            "percentage_personen_45_tot_65_jaar",
-            "percentage_personen_65_jaar_en_ouder",
-        ]
-
-        for col in percentage_cols:
-            if col not in self.gdf.columns:
-                continue
-
-            mask = self.gdf[col].notna() & self.gdf["aantal_inwoners"].notna()
-
-            # Compute: (percentage * population / 100)
-            self.gdf.loc[mask, col] = (
-                (self.gdf.loc[mask, col] * self.gdf.loc[mask, "aantal_inwoners"] / 100)
-                .round(0)
-            )
-
-        # Rename columns to remove "percentage_" prefix
-        rename_map = {col: col.replace("percentage_", "") for col in percentage_cols}
-        self.gdf.rename(columns=rename_map, inplace=True)
 
     def _aggregate_gemeenten(self) -> None:
         """
@@ -224,10 +195,7 @@ class GetGemeenteDataPDOK:
         Geometry is dissolved on gemeente attributes.
         """
         numeric_cols = [
-            "aantal_inwoners", "aantal_huishoudens", "personenautos_totaal",
-            "personen_0_tot_15_jaar", "personen_15_tot_25_jaar",
-            "personen_25_tot_45_jaar", "personen_45_tot_65_jaar",
-            "personen_65_jaar_en_ouder",
+            "aantal_inwoners"
         ]
 
         # Dissolve into municipality polygons
